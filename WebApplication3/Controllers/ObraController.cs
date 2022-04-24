@@ -1,10 +1,11 @@
-﻿using DomainService.Dominio.Interfaces.Serviço;
+﻿using DomainService.Dominio.Entidades.DTO;
+using DomainService.Dominio.Interfaces.Serviço;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication3.Dominio.Entidades.DTO;
+
 
 namespace WebApplication3.Controllers
 {
@@ -47,7 +48,7 @@ namespace WebApplication3.Controllers
 
         [HttpPut("AtualizarObra")]
         [ProducesResponseType(typeof(bool), 200)]
-        public IActionResult AtualizarObra( ObraDTO obra)
+        public IActionResult AtualizarObra( AlterarObraDTO obra)
         {
             bool retorno = _service.AlterarObra(obra);
 

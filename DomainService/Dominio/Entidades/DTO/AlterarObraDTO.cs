@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DomainService.Dominio.Entidades.DTO
 {
-    public class ObraDTO
+    public class AlterarObraDTO
     {
         public int idObra { get; set; }
         public string isbn { get; set; }

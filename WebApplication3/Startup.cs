@@ -75,10 +75,15 @@ namespace WebApplication3
         {
             services.AddScoped<IClienteService, ClienteServico>();
             services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
+
             services.AddScoped<IObraService, ObraServico>();
             services.AddScoped<IObraRepositorio, ObraRepositorio>();
+            
             services.AddScoped<IEmprestimoService, EmprestimoServico>();
             services.AddScoped<IEmprestimoRepositorio, EmprestimoRepositorio>();
+            
+            services.AddSingleton<IBaseRepositorio, BaseRepositorio>();
+
         }
 
     }

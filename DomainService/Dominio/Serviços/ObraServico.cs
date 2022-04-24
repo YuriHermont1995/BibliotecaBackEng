@@ -1,44 +1,48 @@
-﻿using DomainService.Dominio.Interfaces.Serviço;
+﻿using DomainService.Dominio.Entidades.DTO;
+using DomainService.Dominio.Interfaces.Repository;
+using DomainService.Dominio.Interfaces.Serviço;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WebApplication3.Dominio.Entidades.DTO;
 
 namespace DomainService.Dominio.Serviços
 {
     public class ObraServico : IObraService
     {
-        public bool AlterarObra(ObraDTO cliente)
+        private readonly IObraRepositorio _obraRepositorio;
+        private readonly IEmprestimoService _empretimoService;
+        public ObraServico(IObraRepositorio obraRepositorio, IEmprestimoService empretimoService)
         {
-            throw new NotImplementedException();
+            _obraRepositorio = obraRepositorio;
+            _empretimoService = empretimoService;
+        }
+        public bool AlterarObra(AlterarObraDTO obra)
+        {
+            return _obraRepositorio.AlterarObra(obra);
         }
 
-        
-        public bool DesativarObra(int idObra)
+        public bool InserirObra(ObraDTO Obra)
         {
-            throw new NotImplementedException();
+            return _obraRepositorio.CadastrarObra(Obra);
         }
-
-        public bool InserirObra(ObraDTO cliente)
+        public ObraDTO BuscarObra(int idUsuario)
         {
-            throw new NotImplementedException();
+            return _obraRepositorio.BuscarObra(idUsuario);
         }
-
-        public bool ListarEmprestimos()
+        public List<ObraDTO> ListarObra()
         {
-            throw new NotImplementedException();
+            return _obraRepositorio.ListarObra();
         }
+        //public bool DesativarObra(int idObra)
+        //{
+        //    return _obraRepositorio.ExcluirObra(idObra);
+        //}
 
-        ObraDTO IObraService.BuscarObra(int idObra)
+        public bool RealizarEmprestimo(int idObra, int idCliente)
         {
-            throw new NotImplementedException();
-        }
-
-        List<ObraDTO> IObraService.ListarObra()
-        {
-            throw new NotImplementedException();
+            return _empretimoService.InserirEmprestimo(idObra, idCliente);
         }
     }
 }

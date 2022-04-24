@@ -1,9 +1,9 @@
-﻿using DomainService.Dominio.Interfaces.Serviço;
+﻿using DomainService.Dominio.Entidades.DTO;
+using DomainService.Dominio.Interfaces.Serviço;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication3.Dominio.Entidades.DTO;
 using WebApplication3.Dominio.Interfaces;
 using WebApplication3.Dominio.Interfaces.Repository;
 
@@ -20,7 +20,7 @@ namespace WebApplication3.Dominio.Serviços
             _empretimoService = empretimoService;
         }
 
-        public bool AlterarCliente(ClienteDTO cliente)
+        public bool AlterarCliente(AlterarClienteDTO cliente)
         {
             return _clienteRepositorio.AlterarCliente(cliente);
         }
@@ -42,9 +42,9 @@ namespace WebApplication3.Dominio.Serviços
             return _clienteRepositorio.ExcluirCliente(idCliente);
         }
 
-        public bool RealizarEmprestimo(ClienteDTO cliente, ObraDTO obra)
+        public bool RealizarEmprestimo(int idCliente, int idObra)
         {
-            return _empretimoService.InserirEmprestimo(cliente, obra);
+            return _empretimoService.InserirEmprestimo(idCliente, idObra);
         }
     }
 }

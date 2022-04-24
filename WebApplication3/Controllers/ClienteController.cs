@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DomainService.Dominio.Entidades.DTO;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WebApplication3.Dominio.Entidades.DTO;
 using WebApplication3.Dominio.Interfaces;
 using WebApplication3.Dominio.Serviços;
 
@@ -47,7 +47,7 @@ namespace WebApplication3.Controllers
 
         [HttpPut("AtualizarCliente")]
         [ProducesResponseType(typeof(bool), 200)]
-        public IActionResult AtualizarCliente( ClienteDTO cliente)
+        public IActionResult AtualizarCliente( AlterarClienteDTO cliente)
         {
             bool retorno  = _service.AlterarCliente(cliente);
 
@@ -63,14 +63,14 @@ namespace WebApplication3.Controllers
             return Ok(retorno);
         }
 
-        [HttpPost("RelizarEmprestimo")]
-        [ProducesResponseType(typeof(bool), 200)]
-        public IActionResult RelizarEmprestimo([FromQuery] ClienteDTO cliente,ObraDTO obra)
-        {
-            bool retorno = _service.RealizarEmprestimo(cliente, obra);
+        //[HttpPost("RelizarEmprestimo")]
+        //[ProducesResponseType(typeof(bool), 200)]
+        //public IActionResult RelizarEmprestimo([FromQuery] ClienteDTO cliente,ObraDTO obra)
+        //{
+        //    bool retorno = _service.RealizarEmprestimo(cliente, obra);
 
-            return Ok(retorno);
-        }
+        //    return Ok(retorno);
+        //}
 
     }
 }
